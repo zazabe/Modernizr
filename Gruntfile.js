@@ -70,7 +70,7 @@ module.exports = function( grunt ) {
     },
     watch: {
       files: '<%= jshint.files %>',
-      tasks: 'jshint',
+      tasks: 'build',
       tests: {
         files: '<%= jshint.tests.files.src %>',
         tasks: ['jshint:tests', 'qunit']
@@ -200,10 +200,10 @@ module.exports = function( grunt ) {
     'saucelabs-qunit': {
       all: {
         options: {
-          urls: ['http://127.0.0.1:9999/test/basic.html'],
+          urls: ['http://localhost:9999/test/basic.html'],
           tunnelTimeout: 5,
           build: process.env.TRAVIS_JOB_ID,
-          concurrency: 2,
+          concurrency: 3,
           browsers: browsers,
           testname: 'qunit tests',
           tags: ['master', '<%= pkg.version %>']
